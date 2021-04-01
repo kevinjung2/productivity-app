@@ -1,4 +1,5 @@
 class ShoppingList < ApplicationRecord
   belongs_to :event
-  has_many :items
+  has_many :amounts
+  has_many :items, through: :amounts
 end

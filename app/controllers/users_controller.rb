@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: params[:id])
+    @user = find_user
     if current_user != @user
       redirect_to '/login'
     end
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find_by(id: params[:id])
+    @user = find_user
   end
 
   def update
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    user = User.find_by(id: params[:id])
+    user = find_user
     user.destroy
   end
 end

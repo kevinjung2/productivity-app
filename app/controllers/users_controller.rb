@@ -17,4 +17,17 @@ class UsersController < ApplicationController
   def create
     user = User.create(user_params)
   end
+
+  def edit
+    @user = User.find_by(id: params[:id])
+  end
+
+  def update
+    user = User.update(user_params)
+  end
+
+  def destroy
+    user = User.find_by(id: params[:id])
+    user.destroy
+  end
 end

@@ -3,6 +3,10 @@
   <%=f.text_field :name%><br>
   <%=f.label :password%>
   <%=f.text_field :password%><br>
+  <%if !is_logged_in?%>  
+    <%=f.label :password_confirmation%>
+    <%=f.text_field :password_confirmation%><br>
+  <%end%>
   <%=f.label :birthday%>
   <%=f.date_select :birthday, start_year: Date.current.year, end_year: 1920, include_blank: true%><br>
   <%=f.submit%>

@@ -18,7 +18,13 @@ class EventsController < ApplicationController
   end
 
   def show
+    #same checks as index action + checks to make sure the user is attending the event
+    redirect_if_not_logged_in
+    redirect_if_user_doesnt_match(params[:user_id])
+    redirect_if_not_attending
 
+    #gets event for view
+    @event = Event.find_by(id: params[:id])
   end
 
   def new
@@ -40,4 +46,10 @@ class EventsController < ApplicationController
   def destroy
 
   end
+
+  private
+
+    def redirect_if_not_attending
+      redirect_to "/users/#{session[:user_id]}/events" unless Event.find_by(id: params[:id]).users.inlude?(current_user)
+    end
 end

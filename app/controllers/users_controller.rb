@@ -30,4 +30,10 @@ class UsersController < ApplicationController
     user = find_user
     user.destroy
   end
+
+  private
+
+    def user_params
+      params.require(:user).permit(:name, :password, :password_confirmation, :birthday)
+    end
 end

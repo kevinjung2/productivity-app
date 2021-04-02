@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   resources :items
-  resources :shopping_lists
-  resources :events
-  resources :users, except: [:new, :show]
+  resources :users, except: [:new, :show] do
+    resources :shopping_lists
+    resources :events
+  end
   get '/signup', to: 'users#new'
   get '/profile', to: 'users#show'
   get '/login', to: 'sessions#new'

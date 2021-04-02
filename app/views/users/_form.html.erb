@@ -6,6 +6,6 @@
   <%=f.label :password_confirmation%>
   <%=f.password_field :password_confirmation%><br>
   <%=f.label :birthday%>
-  <%=f.date_select :birthday, start_year: Date.current.year, end_year: 1920, include_blank: true%><br>
+  <%=f.date_field :birthday, max: "2021-12-31", min: "1920-12-31"%><br>
   <%=f.submit%>
 <%end%>

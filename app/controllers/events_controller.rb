@@ -1,11 +1,43 @@
 class EventsController < ApplicationController
   def index
-    #checks to see if the logged in user is the same user in the url /users/**here**/events
-    if current_user != User.find_by(id: params[:user_id])
-      redirect_to '/profile', alert: "You can only view your own events"
-    else
-      @hosted = current_user.hosted_events
-      @events = current_user.events.delete_if{ |event| @hosted.include?(event) }
-    end
+    #checks to see if the user is logged in and is the same user in the url /users/**here**/events
+    redirect_if_not_logged_in
+    redirect_if_user_doesnt_match(params[:user_id])
+
+    #gets all of the current_user's events
+    @events = current_user.events
+  end
+
+  def hosted
+    #same checks as index action
+    redirect_if_not_logged_in
+    redirect_if_user_doesnt_match(params[:user_id])
+
+    #gets the events hosted by current_user
+    @events = current_user.hosted_events
+  end
+
+  def show
+
+  end
+
+  def new
+
+  end
+
+  def create
+
+  end
+
+  def edit
+
+  end
+
+  def update
+
+  end
+
+  def destroy
+
   end
 end

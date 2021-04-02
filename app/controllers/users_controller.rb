@@ -16,10 +16,17 @@ class UsersController < ApplicationController
 
   def create
     user = User.create(user_params)
+    session[:user_id] = user.id
   end
 
   def edit
     @user = find_user
+    if !current_user
+      redirect_to "/login"
+    end
+    if @user != current_user
+      redirect_to current_user, alert: "You cannot edit another users account"
+    end
   end
 
   def update

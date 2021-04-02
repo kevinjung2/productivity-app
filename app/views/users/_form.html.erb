@@ -1,9 +1,9 @@
 <%=form_for @user do |f| %>
   <%=f.label :name%>
-  <%=f.text_field :name%>
+  <%=f.text_field :name%><br>
   <%=f.label :password%>
-  <%=f.text_field :password%>
+  <%=f.text_field :password%><br>
   <%=f.label :birthday%>
-  <%=f.date_select :birthday, start_year: Date.current.year, end_year: 1920, include_blank: true%>
+  <%=f.date_select :birthday, start_year: Date.current.year, end_year: 1920, include_blank: true%><br>
   <%=f.submit%>
 <%end%>

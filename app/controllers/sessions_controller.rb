@@ -19,7 +19,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-
+    session.destroy
+    redirect_to '/login', alert: "You were successfully logged out"
   end
 
 end

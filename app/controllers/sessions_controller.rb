@@ -1,6 +1,9 @@
 class SessionsController < ApplicationController
 
   def new
+    if current_user
+      redirect_to '/profile'
+    end
     @user = User.new
   end
 
@@ -9,6 +12,7 @@ class SessionsController < ApplicationController
     if user
       if user.authenticate(params[:password])
         session[:user_id] = user.id
+        redirect_to '/profile', alert: "Welcome Back"
       else
         redirect_to '/login', alert: "Incorrect Password"
       end

@@ -3,19 +3,7 @@
 <%=link_to "Your Shopping Lists", user_shopping_lists_path(@user)%>
 
 <%=link_to "Your Hosted Events", user_hosted_events_path(@user)%>
-<% @user.hosted_events.each do |event| %>
-  <h3><%= link_to event.name, event_path(event) %></h3>
-  <ul>
-    <li><%= event.location %></li>
-    <li><%= event_time %></li>
-  </ul>
-<%end%>
+<%=render partial: "/events/show_events", locals: {event: @user.hosted_events}%>
 
 <%=link_to "Your Events", user_events_path(@user)%>
-<% @user.events.each do |event| %>
-  <h3><%= link_to event.name, event_path(event) %></h3>
-  <ul>
-    <li><%= event.location %></li>
-    <li><%= event_time %></li>
-  </ul>
-<%end%>
+<%=render partial: "/events/show_events", locals: {event: @user.events}%>

@@ -1,8 +1,2 @@
 <h1>All Events: </h1>
-<% @events.each do |event| %>
-  <h3><%= link_to event.name, event_path(event) %></h3>
-  <ul>
-    <li><%= event.location %></li>
-    <li><%= event_time %></li>
-  </ul>
-<% end %>
+<%=render partial: "show_events", locals: {event: @events}%>

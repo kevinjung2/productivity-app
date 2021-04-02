@@ -4,8 +4,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = find_user
-    if current_user != @user
+    @user = current_user
+    if !@user
       redirect_to '/login'
     end
   end

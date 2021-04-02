@@ -3,6 +3,6 @@
   <h3><%= link_to event.name, event %></h3>
   <ul>
     <li><%= event.location %></li>
-    <li><%= event.time %></li>
+    <li><%= event.time.strftime("%A, %B %e %l:%M%P") %></li>
   </ul>
 <% end %>

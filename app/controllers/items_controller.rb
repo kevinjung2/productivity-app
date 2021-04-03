@@ -17,7 +17,8 @@ class ItemsController < ApplicationController
   end
 
   def create
-
+    item = Item.create(item_params)
+    redirect_to item, alert: "Successfully created item."
   end
 
   def edit
@@ -36,6 +37,6 @@ class ItemsController < ApplicationController
   private
 
     def item_params
-
+      params.require(:item).permit(:name, :description, :category_id)
     end
 end

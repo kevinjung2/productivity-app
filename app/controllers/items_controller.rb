@@ -1,6 +1,10 @@
 class ItemsController < ApplicationController
   def index
-
+    @items = {}
+    @categories = Category.all
+    @categories.each do |category|
+      @items["#{category.name}"] = category.items
+    end
   end
 
   def show

@@ -6,6 +6,7 @@ class EventsController < ApplicationController
 
     #gets all of the current_user's events
     @events = current_user.events
+    @user = current_user
   end
 
   def hosted

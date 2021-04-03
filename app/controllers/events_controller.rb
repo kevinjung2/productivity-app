@@ -51,7 +51,11 @@ class EventsController < ApplicationController
   end
 
   def update
-
+    event = find_event
+    redirect_to "/users/#{session[:user_id]}/events" unless event
+    redirect_to "/users/#{session[:user_id]}/events" unless event.host == current_user
+    event.update(event_params)
+    redirect_to user_event_path(current_user, event), alert: "successfully changed event"
   end
 
   def destroy

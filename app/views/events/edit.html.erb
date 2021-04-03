@@ -1,4 +1,4 @@
 <% redirect_to "/users/#{@user.id}/events", alert: "Must be the host to edit an event" if current_user != @event.host %>
 
 <h1>Edit event</h1>
-<%= render partial: "form", locals: {post_url: "/users/#{@user.id}/events/@event.id"} %>
+<%= render partial: "form", locals: {post_url: "/users/#{@user.id}/events/#{@event.id}"} %>

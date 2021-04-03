@@ -33,7 +33,10 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-
+    item = Item.find_by(id: params[:id])
+    name = item.name
+    item.destroy
+    redirect_to items_path, alert: "Successfully destroyed item: #{name}"
   end
 
   private

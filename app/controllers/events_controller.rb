@@ -16,6 +16,7 @@ class EventsController < ApplicationController
 
     #gets the events hosted by current_user
     @events = current_user.hosted_events
+    @user = current_user
   end
 
   def show
@@ -26,6 +27,7 @@ class EventsController < ApplicationController
 
     #gets event for view
     @event = find_event
+    @user = current_user
   end
 
   def new
@@ -36,6 +38,8 @@ class EventsController < ApplicationController
 
   def create
     event = Event.create(event_params)
+    event.users << current_user unless event.users.include?(current_user)
+    redirect_to user_event_path(current_user, event), alert: "successfully created event"
   end
 
   def edit

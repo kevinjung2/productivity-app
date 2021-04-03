@@ -1,3 +1,8 @@
-<%= @event.name %>
-<%= @event.host %>
-<%= event_time(@event) %>
+<h3>Event:</h3>
+<%= @event.name %><br>
+<h3>Host:</h3>
+<%= @event.host.name %><br>
+<h3>Time:</h3>
+<%= event_time(@event) %><br>
+<h3>Location:</h3>
+<%= @event.location %><br>

@@ -27,7 +27,9 @@ class ItemsController < ApplicationController
   end
 
   def update
-
+    item = Item.find_by(id: params[:id])
+    item.update(item_params)
+    redirect_to item, alert: "Successfully updated item."
   end
 
   def destroy

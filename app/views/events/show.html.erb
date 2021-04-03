@@ -13,3 +13,10 @@
   <%end%><br>
 </ul>
 <h3><%= link_to "Shopping List:", user_shopping_list_path(@user, @event.shopping_list)%></h3>
+<% if @event.shopping_list.items.empty? %>
+  <%= link_to "Add items now", edit_user_shopping_list_path(@user, @event.shopping_list) %>
+<%else%>
+  <% @event.shopping_list.items.each do |item| %>
+    <%= item.name %>
+  <% end %>
+<% end %>

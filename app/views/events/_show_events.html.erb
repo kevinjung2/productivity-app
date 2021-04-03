@@ -2,6 +2,6 @@
   <h3><%= link_to event.name, user_event_path(user, event) %></h3>
   <ul>
     <li><%= event.location %></li>
-    <li><%= event_time(event) unless true%></li>
+    <li><%= event_time(event) %></li>
   </ul>
 <% end %>

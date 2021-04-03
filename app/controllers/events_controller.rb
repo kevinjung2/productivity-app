@@ -39,6 +39,8 @@ class EventsController < ApplicationController
   def create
     event = Event.create(event_params)
     event.users << current_user unless event.users.include?(current_user)
+    event.shopping_list = ShoppingList.create(name: "#{event.name}'s Shopping List")
+    event.save
     redirect_to user_event_path(current_user, event), alert: "successfully created event"
   end
 

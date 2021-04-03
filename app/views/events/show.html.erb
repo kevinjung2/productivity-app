@@ -6,3 +6,10 @@
 <%= event_time(@event) %><br>
 <h3>Location:</h3>
 <%= @event.location %><br>
+<h3>Attendees:</h3>
+<ul>
+  <% @event.users.each do |user|%>
+    <li><%= user.name %></li>
+  <%end%><br>
+</ul>
+<h3><%= link_to "Shopping List:", user_shopping_list_path(@user, @event.shopping_list)%></h3>

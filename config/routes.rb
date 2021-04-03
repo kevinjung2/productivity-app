@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :items
   resources :users, except: [:new, :show] do
-    resources :shopping_lists
+    resources :shopping_lists,  except: [:new, :create]
     resources :events
     get '/hosted', to: 'events#hosted'
   end

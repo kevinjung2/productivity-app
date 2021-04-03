@@ -3,7 +3,7 @@
 <%=link_to "Your Shopping Lists", user_shopping_lists_path(@user)%>
 
 <%=link_to "Your Hosted Events", user_hosted_path(@user)%>
-<%=render partial: "/events/show_events", locals: {event: @user.hosted_events}%>
+<%=render partial: "/events/show_events", locals: {events: @user.hosted_events, user: @user}%>
 
 <%=link_to "Your Events", user_events_path(@user)%>
-<%=render partial: "/events/show_events", locals: {event: @user.events}%>
+<%=render partial: "/events/show_events", locals: {events: @user.events, user: @user}%>

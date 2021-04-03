@@ -24,19 +24,23 @@ class EventsController < ApplicationController
     redirect_if_not_attending
 
     #gets event for view
-    @event = Event.find_by(id: params[:id])
+    @event = find_event
   end
 
   def new
     @event = Event.new
+    @user = current_user
+    @users = User.all
   end
 
   def create
-    
+    event = Event.create(event_params)
   end
 
   def edit
-
+    @event = find_event
+    @user = current_user
+    @users = User.all
   end
 
   def update
@@ -50,6 +54,14 @@ class EventsController < ApplicationController
   private
 
     def redirect_if_not_attending
-      redirect_to "/users/#{session[:user_id]}/events" unless Event.find_by(id: params[:id]).users.inlude?(current_user)
+      redirect_to "/users/#{session[:user_id]}/events" unless Event.find_by(id: params[:id]).users.include?(current_user)
+    end
+
+    def find_event
+      Event.find_by(id: params[:id])
+    end
+
+    def event_params
+      params.require(:event).permit(:name, :time, :host_id, :location, user_ids: [])
     end
 end

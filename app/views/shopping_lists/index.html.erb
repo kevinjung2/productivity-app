@@ -1,5 +1,5 @@
 <h1><%= "#{@user.name}'s Shopping Lists" %></h1>
 <% @shopping_lists.each do |list| %>
   <h2><%= link_to list.name, user_shopping_list_path(@user, list) %></h2>
-  <h4><%= list.amounts.count %></h4>
+  <h4><%= "#{list.amounts.count} Items" %></h4>
 <% end %>

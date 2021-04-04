@@ -7,4 +7,8 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :name, uniqueness: true
+
+  def attended_events
+    self.events.select{|event| !self.hosted_events.include?(event)}
+  end
 end

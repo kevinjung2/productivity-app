@@ -5,8 +5,8 @@
   <%= link_to list.name, user_shopping_list_path(@user, list) %>
 <% end %>
 
-<h2><%=link_to "Your Hosted Events", user_hosted_path(@user)%></h2>
+<h2><%=link_to "Events You're Hosting", user_hosted_path(@user)%></h2>
 <%=render partial: "/events/show_events", locals: {events: @user.hosted_events, user: @user}%>
 
-<h2><%=link_to "Your Events", user_events_path(@user)%></h2>
-<%=render partial: "/events/show_events", locals: {events: @user.events, user: @user}%>
+<h2><%=link_to "Events You're Attending", user_events_path(@user)%></h2>
+<%=render partial: "/events/show_events", locals: {events: @user.attended_events, user: @user}%>

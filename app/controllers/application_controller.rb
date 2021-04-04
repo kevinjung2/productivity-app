@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
       redirect_to '/login' if !session[:user_id]
     end
 
+    def redirect_if_logged_in
+      redirect_to '/profile' if session[:user_id]
+    end
+
     def redirect_if_user_doesnt_match(user_id)
       redirect_to '/profile' if current_user != User.find_by(id: user_id)
     end

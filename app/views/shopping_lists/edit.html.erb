@@ -1,0 +1,9 @@
+<h1>Edit <%= @shopping_list.name %></h1>
+<%= form_for @shopping_list do |f| %>
+  <%= f.fields_for :amounts do |amounts_fields| %>
+    <%= amounts_fields.label "New Item" %>
+    <%= amounts_fields.text_field :measurement %>
+    <%= amounts_fields.collection_select :item_id, @items, :id, :name %>
+  <% end %>
+  <%= f.submit %>
+<% end %>

@@ -21,7 +21,11 @@ class ShoppingListsController < ApplicationController
   end
 
   def edit
-
+    @shopping_list = ShoppingList.find_by(id: params[:id])
+    10.times do
+      @shopping_list.amounts.build
+    end
+    @items = Item.all
   end
 
   def update

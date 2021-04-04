@@ -1,12 +1,14 @@
 class UsersController < ApplicationController
   def index
+    redirect_if_not_logged_in
     @users = User.all
   end
 
   def show
     @user = current_user
-    if !@user
-      redirect_to '/login'
+    redirect_if_not_logged_in
+    if @user != find_user
+      redirect_to '/profile', alert: "You can only see your profile!"
     end
   end
 

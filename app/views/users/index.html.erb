@@ -1,7 +1,11 @@
 <% @users.each do |user| %>
-  <h3><%= link_to user.name, user_path(user) %></h3>
+  <% if current_user == user %>
+    <h3><%= link_to "Me", '/profile' %></h3>
+  <% else %>
+    <h3><%= user.name %></h3>
+  <% end %>
   <ul>
-    <li>Hosting <%= user.hosted_events.count %> events</li>
-    <li>Attending <%= user.events.count %> events</li>
+    <li>Hosting <%= user.hosted_events.count %> event(s)</li>
+    <li>Attending <%= user.events.count %> event(s)</li>
   </ul>
 <% end %>

@@ -7,6 +7,6 @@
       <%= button_to "remove item", amount_path(amount), method: :delete %>
     <% end %>
   </ul>
-  <%= link_to "Edit or Add Items", edit_user_shopping_list_path(@user, @shopping_list) %>
-  <%= button_to "Delete All", user_shopping_list_path(@user, @shopping_list), method: :delete %>
 <% end %>
+<%= link_to "Edit or Add Items", edit_user_shopping_list_path(@user, @shopping_list) %>
+<%= button_to "Delete All", user_shopping_list_path(@user, @shopping_list), method: :delete %>

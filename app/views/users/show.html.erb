@@ -1,9 +1,12 @@
 <h1><%=@user.name%></h1>
 
-<%=link_to "Your Shopping Lists", user_shopping_lists_path(@user)%>
+<h2><%=link_to "Your Shopping Lists", user_shopping_lists_path(@user)%></h2>
+<% @user.shopping_lists.each do |list| %>
+  <%= link_to list.name, user_shopping_list_path(@user, list) %>
+<% end %>
 
-<%=link_to "Your Hosted Events", user_hosted_path(@user)%>
+<h2><%=link_to "Your Hosted Events", user_hosted_path(@user)%></h2>
 <%=render partial: "/events/show_events", locals: {events: @user.hosted_events, user: @user}%>
 
-<%=link_to "Your Events", user_events_path(@user)%>
+<h2><%=link_to "Your Events", user_events_path(@user)%></h2>
 <%=render partial: "/events/show_events", locals: {events: @user.events, user: @user}%>

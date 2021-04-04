@@ -1,2 +1,3 @@
 <h1>Hosted Events: </h1>
 <%=render partial: "show_events", locals: {events: @events, user: @user}%>
+<%= link_to "Add Event", new_user_event_path(@user) %>

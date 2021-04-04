@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     redirect_if_not_logged_in
-    redirect_if_user_doesnt_match
+    redirect_if_user_doesnt_match(params[:user_id])
   end
 
   def new
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
   def edit
     redirect_if_not_logged_in
-    redirect_if_user_doesnt_match
+    redirect_if_user_doesnt_match(params[:user_id])
     @user = find_user
   end
 
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 
   def destroy
     redirect_if_not_logged_in
-    redirect_if_user_doesnt_match
+    redirect_if_user_doesnt_match(params[:user_id])
     user = find_user
     user.destroy
   end

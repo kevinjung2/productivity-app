@@ -19,6 +19,6 @@ class ApplicationController < ActionController::Base
     end
 
     def redirect_if_user_doesnt_match(user_id)
-      redirect_to '/profile' if current_user != find_user
+      redirect_to '/profile' if current_user != User.find_by(id: user_id)
     end
 end

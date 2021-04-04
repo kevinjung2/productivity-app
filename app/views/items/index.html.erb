@@ -2,7 +2,7 @@
 <% @categories.each do |category| %>
   <h3><%= category.name %></h3>
   <ul>
-    <% @items["#{category.name}"].each do |item| %>
+    <% @items["#{category.name}"].sort{|a,b| a.name <=> b.name}.each do |item| %>
       <li><%= link_to item.name, item_path(item) %></li>
     <% end %>
   </ul>

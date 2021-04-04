@@ -40,8 +40,8 @@
  }
 
  .navbar {
-   width: 14%;
+   width: 11%;
    display: inline;
-   margin-left: auto;
-   margin-right: auto;
+   text-align: center;
+   margin: auto;
  }

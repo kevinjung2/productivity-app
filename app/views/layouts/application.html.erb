@@ -16,6 +16,7 @@
         <%= link_to "Shopping Lists", user_shopping_lists_path(current_user), class: "navbar" %>
         <%= link_to "Events", user_events_path(current_user), class: "navbar" %>
         <%= link_to "Hosted Events", user_hosted_path(current_user), class: "navbar" %>
+        <%= link_to "Items", items_path, class: "navbar" %>
         <%= button_to "Log Out", '/logout', method: :delete, id: "logout", class: "navbar" %>
       <% else %>
         <%= link_to "Sign up", '/signup', class: "navbar" %>

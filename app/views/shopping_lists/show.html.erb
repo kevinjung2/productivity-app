@@ -1,0 +1,9 @@
+<h1><%= @shopping_list.name %></h1>
+<% @categories.each do |category| %>
+  <h3><%= category.name %></h3>
+  <ul>
+    <% @items[category.name].each do |amount| %>
+      <li><%= "#{amount.measurement}, #{amount.item.name}" %></li>
+    <% end %>
+  </ul>
+<% end %>

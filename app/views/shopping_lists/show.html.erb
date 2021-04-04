@@ -3,8 +3,9 @@
   <h3><%= category.name %></h3>
   <ul>
     <% @items[category.name].each do |amount| %>
-      <li><%= "#{amount.measurement}, #{amount.item.name}" %><%= button_to "remove item", amount_path(amount), method: :delete %></li>
-
+      <li><%= "#{amount.measurement}, #{amount.item.name}" %></li>
+      <%= button_to "remove item", amount_path(amount), method: :delete %>
     <% end %>
   </ul>
+  <%= link_to "Edit This Shopping List", edit_user_shopping_list_path(@user, @shopping_list) %>
 <% end %>

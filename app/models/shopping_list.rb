@@ -7,8 +7,21 @@ class ShoppingList < ApplicationRecord
 
   def amounts_attributes=(attributes)
     attributes.values.each do |value|
-      if value[:measurement] != "" && value[:item] != ""
-        Amount.create(shopping_list: self, measurement: value[:measurement], item: Item.find_or_create_by(name: value[:item_name], description: "pending", category: Category.find_or_create_by(name: "Undefined")))
+      item = Item.find_by(name: value[:item_name])
+      if value[:measurement] != "" && value[:item_name] != ""
+        if amount = Amount.find_by(id: value[:id])
+          if item
+            amount.update(measurement: value[:measurement], item: item)
+          else
+            amount.update(measurement: value[:measurement], item: Item.create(name: value[:item_name], description: "pending", category: Category.find_or_create_by(name: "Undefined")))
+          end
+        else
+          if item
+            Amount.create(shopping_list: self, measurement: value[:measurement], item: item)
+          else
+            Amount.create(shopping_list: self, measurement: value[:measurement], item: Item.create(name: value[:item_name], description: "pending", category: Category.find_or_create_by(name: "Undefined")))
+          end
+        end
       end
     end
   end

@@ -2,6 +2,7 @@
 <%= form_for @shopping_list, url: "/users/#{@user.id}/shopping_lists/#{@shopping_list.id}" do |f| %>
   <%= f.label "Add an item" %><br>
   <%= f.fields_for :amounts do |amounts_fields| %>
+    <%= amounts_fields.hidden_field :id if amounts_fields.hidden_field :id %>
     <%= amounts_fields.label :measurement %>
     <%= amounts_fields.text_field :measurement %>
     <%= amounts_fields.label "Item Name" %>
@@ -11,10 +12,6 @@
         <option value="<%=item.name%>"></option>
       <% end %>
     </datalist>
-  <% end %>
-  <% if !@shopping_list.items.empty? %>
-    <%= f.label "Remove an Item" %><br>
-    <%= f.collection_check_boxes :items, @shopping_list.items, :id, :name %>
   <% end %>
   <%= f.submit %>
 <% end %>

@@ -7,6 +7,7 @@ class ShoppingListsController < ApplicationController
   end
 
   def show
+    @user = current_user
     @shopping_list = ShoppingList.find_by(id: params[:id])
     @categories = Category.all
     @items = {}
@@ -43,6 +44,6 @@ class ShoppingListsController < ApplicationController
   private
 
     def shopping_list_params
-      params.require(:shopping_list).permit(:items, amounts_attributes: [:measurement, :item_name])
+      params.require(:shopping_list).permit(:items, amounts_attributes: [:measurement, :item_name, :id])
     end
 end

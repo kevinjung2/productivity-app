@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :events
     get '/hosted', to: 'events#hosted'
   end
+  resources :amounts, only: :destroy
   get '/signup', to: 'users#new'
   get '/profile', to: 'users#show'
   get '/login', to: 'sessions#new'

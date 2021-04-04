@@ -5,7 +5,7 @@
     <%= amounts_fields.label :measurement %>
     <%= amounts_fields.text_field :measurement %>
     <%= amounts_fields.label "Item Name" %>
-    <%= amounts_fields.text_field :item, list: "item_name" %><br>
+    <%= amounts_fields.text_field :item_name, list: "item_name" %><br>
     <datalist class="item_name">
       <% @items.each do |item| %>
         <option value="<%=item.name%>"></option>

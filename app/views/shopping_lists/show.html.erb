@@ -3,7 +3,8 @@
   <h3><%= category.name %></h3>
   <ul>
     <% @items[category.name].each do |amount| %>
-      <li><%= "#{amount.measurement}, #{amount.item.name}" %></li>
+      <li><%= "#{amount.measurement}, #{amount.item.name}" %><%= button_to "remove item", amount_path(amount), method: :delete %></li>
+
     <% end %>
   </ul>
 <% end %>

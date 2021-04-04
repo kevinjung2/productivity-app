@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2021_04_03_113303) do
   end
 
   create_table "categories", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

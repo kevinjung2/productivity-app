@@ -30,7 +30,10 @@ class ShoppingListsController < ApplicationController
   end
 
   def update
-
+    # binding.pry
+    shopping_list = ShoppingList.find_by(id: params[:id])
+    shopping_list.update(shopping_list_params)
+    redirect_to user_shopping_list_path(current_user, shopping_list)
   end
 
   def destroy
@@ -40,6 +43,6 @@ class ShoppingListsController < ApplicationController
   private
 
     def shopping_list_params
-
+      params.require(:shopping_list).permit(:items, amounts_attributes: [:measurement, :item_name])
     end
 end

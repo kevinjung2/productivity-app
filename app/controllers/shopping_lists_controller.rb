@@ -38,7 +38,11 @@ class ShoppingListsController < ApplicationController
   end
 
   def destroy
-
+    shopping_list = ShoppingList.find_by(id: params[:id])
+    shopping_list.amounts.each do |amount|
+      amount.destroy
+    end
+    redirect_to user_shopping_list_path(current_user, shopping_list)
   end
 
   private

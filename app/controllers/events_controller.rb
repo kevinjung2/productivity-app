@@ -31,6 +31,7 @@ class EventsController < ApplicationController
   end
 
   def new
+    redirect_if_not_logged_in
     @event = Event.new
     @user = current_user
     @users = User.all
@@ -45,6 +46,8 @@ class EventsController < ApplicationController
   end
 
   def edit
+    redirect_if_not_logged_in
+    redirect_if_user_doesnt_match(params[:user_id])
     @event = find_event
     @user = current_user
     @users = User.all
@@ -59,7 +62,12 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    redirect_if_not_logged_in
+    event = find_event
+    redirect_if_user_doesnt_match(event.id)
 
+    event.destroy
+    redirect_to '/profile', alert: "event successfully destroyed"
   end
 
   private

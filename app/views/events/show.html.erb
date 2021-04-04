@@ -12,11 +12,15 @@
     <li><%= user.name %></li>
   <%end%><br>
 </ul>
-<h3><%= link_to "Shopping List:", user_shopping_list_path(@user, @event.shopping_list)%></h3>
-<% if @event.shopping_list.items.empty? %>
-  <%= link_to "Add items now", edit_user_shopping_list_path(@user, @event.shopping_list) %>
-<%else%>
-  <% @event.shopping_list.items.each do |item| %>
-    <%= item.name %>
+<% if @event.host == @user %>
+  <h3><%= link_to "Shopping List:", user_shopping_list_path(@user, @event.shopping_list)%></h3>
+  <% if @event.shopping_list.items.empty? %>
+    <%= link_to "Add items now", edit_user_shopping_list_path(@user, @event.shopping_list) %>
+  <%else%>
+    <% @event.shopping_list.items.each do |item| %>
+      <%= item.name %>
+    <% end %>
   <% end %>
+
+  <%= button_to "Delete this Event", user_event_path(@event), method: :delete %>
 <% end %>

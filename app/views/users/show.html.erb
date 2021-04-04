@@ -7,6 +7,7 @@
 
 <h2><%=link_to "Events You're Hosting", user_hosted_path(@user)%></h2>
 <%=render partial: "/events/show_events", locals: {events: @user.hosted_events, user: @user}%>
+<%= link_to "Create a New Event", new_user_event_path(@user)%>
 
 <h2><%=link_to "Events You're Attending", user_events_path(@user)%></h2>
 <%=render partial: "/events/show_events", locals: {events: @user.attended_events, user: @user}%>

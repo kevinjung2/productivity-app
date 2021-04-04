@@ -5,7 +5,7 @@
   <%=f.label :location%>
   <%=f.text_field :location%><br>
   <%=f.label :time%>
-  <%=f.datetime_field :time, min: Time.now%><br>
+  <%=f.datetime_field :time, min: DateTime.current.noon%><br>
   <%=f.collection_check_boxes :user_ids, @users, :id, :name%>
   <%=f.submit%>
 <%end%>

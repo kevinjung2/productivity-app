@@ -7,36 +7,35 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     redirect_if_not_logged_in
-    if @user != find_user
-      redirect_to '/profile', alert: "You can only see your profile!"
-    end
+    redirect_if_user_doesnt_match
   end
 
   def new
+    redirect_if_logged_in
     @user = User.new
   end
 
   def create
+    redirect_if_logged_in
     user = User.create(user_params)
     session[:user_id] = user.id
     redirect_to '/profile', alert: "Welcome"
   end
 
   def edit
+    redirect_if_not_logged_in
+    redirect_if_user_doesnt_match
     @user = find_user
-    if !current_user
-      redirect_to "/login"
-    end
-    if @user != current_user
-      redirect_to current_user, alert: "You cannot edit another users account"
-    end
   end
 
   def update
+    redirect_if_not_logged_in
     user = User.update(user_params)
   end
 
   def destroy
+    redirect_if_not_logged_in
+    redirect_if_user_doesnt_match
     user = find_user
     user.destroy
   end

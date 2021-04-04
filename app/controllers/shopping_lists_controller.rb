@@ -26,6 +26,7 @@ class ShoppingListsController < ApplicationController
       @shopping_list.amounts.build
     end
     @items = Item.all
+    @user = current_user
   end
 
   def update

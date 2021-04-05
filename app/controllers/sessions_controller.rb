@@ -22,12 +22,15 @@ class SessionsController < ApplicationController
   end
 
   def create_fb
+    binding.pry
     @user = User.find_or_create_by(uid: auth['uid']) do |u|
       u.name = auth['info']['name']
       u.email = auth['info']['email']
       u.image = auth['info']['image']
+      u.password = "password"
     end
 
+    @user.authenticate("password")
     session[:user_id] = @user.id
 
     redirect_to '/profile'

@@ -23,6 +23,11 @@
         <%= link_to "Sign In", '/login', class: "navbar" %>
       <% end %>
     </nav>
+    <% if !flash[:alert].empty? %>
+      <div class="alert">
+        <h3><%= flash[:alert] %></h3>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

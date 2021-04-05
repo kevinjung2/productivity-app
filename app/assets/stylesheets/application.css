@@ -49,3 +49,7 @@
  #error_explanation {
    color: red;
  }
+
+ .alert {
+   color: red;
+ }

@@ -15,7 +15,7 @@ class EventsController < ApplicationController
     redirect_if_user_doesnt_match(params[:user_id])
 
     #gets the events hosted by current_user
-    @events = current_user.hosted_events
+    @events = Event.hosted(current_user.id)
     @user = current_user
   end
 

@@ -1,4 +1,14 @@
 <h1>Edit <%= @shopping_list.name %></h1>
+<% if @shopping_list.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+    <% @shopping_list.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_for @shopping_list, url: "/users/#{@user.id}/shopping_lists/#{@shopping_list.id}" do |f| %>
   <%= f.label "Add an item" %><br>
   <%= f.fields_for :amounts do |amounts_fields| %>

@@ -16,9 +16,14 @@ class UsersController < ApplicationController
 
   def create
     redirect_if_logged_in
-    user = User.create(user_params)
-    session[:user_id] = user.id
-    redirect_to '/profile', alert: "Welcome"
+    @user = User.new(user_params)
+
+    if @user.save
+      session[:user_id] = user.id
+      redirect_to '/profile', alert: "Welcome"
+    else
+      render :new
+    end
   end
 
   def edit
@@ -29,7 +34,11 @@ class UsersController < ApplicationController
 
   def update
     redirect_if_not_logged_in
-    user = User.update(user_params)
+    if @user = User.update(user_params)
+      redirect_to '/profile'
+    else
+      render :edit
+    end
   end
 
   def destroy

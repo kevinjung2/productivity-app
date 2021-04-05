@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/profile', to: 'users#show'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
+  get '/auth/facebook/callback', to: 'sessions#create_fb'
   delete '/logout', to: 'sessions#destroy'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

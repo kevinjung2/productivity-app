@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'users#show'
   resources :items
   resources :users, except: [:new, :show] do
     resources :shopping_lists,  except: [:new, :create]

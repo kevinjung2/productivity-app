@@ -1,24 +1,36 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Productivity App
 
-Things you may want to cover:
+Productivity App is a simple event scheduling app where you can create events and add your friends while keeping track of a shopping list for the event.
 
-* Ruby version
+### Installing
 
-* System dependencies
+First you will need to fork and clone the repository to your local machine.
 
-* Configuration
+  ```git clone https://github.com/kevinjung2/productivity-app.git```
 
-* Database creation
+then cd into the directly where it was cloned.
 
-* Database initialization
+Run bundle install to install all necessary gems for the program
 
-* How to run the test suite
+  ```bundle install```
 
-* Services (job queues, cache servers, search engines, etc.)
+Finally run "rails s" from the project directory to start the server on your local machine. Go to your browser and visit http://localhost:3000/.
 
-* Deployment instructions
 
-* ...
+## Built With
+
+  - [Contributor Covenant](https://www.contributor-covenant.org/) - Used
+    for the Code of Conduct
+  - [Creative Commons](https://creativecommons.org/) - Used to choose
+    the license
+
+## Contributing
+
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## License
+
+This project is licensed under the [CC0 1.0 Universal](LICENSE.md)
+Creative Commons License - see the [LICENSE.md](LICENSE.md) file for
+details

@@ -10,8 +10,8 @@
 
   <body>
     <nav>
-      <%= link_to "Profile", '/profile', class: "navbar" %>
       <% if current_user %>
+        <%= link_to "Profile", '/profile', class: "navbar" %>
         <%= link_to "Users", users_path, class: "navbar" %>
         <%= link_to "Shopping Lists", user_shopping_lists_path(current_user), class: "navbar" %>
         <%= link_to "Events", user_events_path(current_user), class: "navbar" %>
